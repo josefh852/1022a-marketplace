@@ -23,10 +23,11 @@ app.get("/produtos", async(req,res)=>{
         //2 - Realizar uma consulta na tabela
         const [result, fields] = await conection.query("SELECT * from produtos")
         //3 - Devolver os dados pra quem pediu
+        await conection.end()
         res.send(result)
     }catch(e){
         res.status(500).send("Server ERROR")
-    }
+    } 
 })
 //Abrir uma porta do servidor Express
 app.listen(8000,()=>{
