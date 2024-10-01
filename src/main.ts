@@ -6,9 +6,12 @@
 
 import express from 'express'
 import mysql from 'mysql2/promise'
+import cors from 'cors'
+
 //Criar um OBJ do express
 const app = express()
-
+app.use (express.json())
+app.use(cors())
 app.get("/produtos", async(req,res)=>{
     //OK -> 0 - Criar o banco de dados e iniciar o servidor de banco.
     //1 - Criar a conexão com o banco
